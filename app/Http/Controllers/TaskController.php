@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
+
 use App\Models\Task;
 class TaskController extends Controller
 {
@@ -11,16 +13,18 @@ class TaskController extends Controller
     $tasks = Task::all();
     return view('tasks.index',['tasks' => $tasks]);
   }
+
   public function create()
   {
     return view('tasks.create');
   }
-  public function store(Request $request)
+
+  public function store(TaskRequest $request)
+  // public function store(Request $request)
   {
     $task = new Task;
     $task->name = $request->name;
     $task->description = $request->description;
-    // dd($task);
     $task->save();
 
     return redirect('/');
