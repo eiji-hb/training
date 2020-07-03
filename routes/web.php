@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/','TaskController@index')->name('root');
+Route::get('create', 'TaskController@create')->name('task.create');
+Route::post('store', 'TaskController@store')->name('task.store');
+Route::get('show/{id}', 'TaskController@show')->name('task.show');
+Route::get('edit/{id}', 'TaskController@edit')->name('task.edit');
+Route::post('update/{id}', 'TaskController@update')->name('task.update');
+Route::post('destroy/{id}', 'TaskController@destroy')->name('task.destroy');
