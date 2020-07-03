@@ -27,6 +27,7 @@ class TaskController extends Controller
     $task->description = $request->description;
     $task->save();
 
+    session()->flash('flash_message', '投稿が完了しました');
     return redirect('/');
   }
   public function show($id)
@@ -44,7 +45,7 @@ class TaskController extends Controller
     $task = Task::find($id);
     $task->name = $request->name;
     $task->description = $request->description;
-
+    session()->flash('flash_message', '投稿を更新しました');
     $task->save();
 
     return redirect('/');
