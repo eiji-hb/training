@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Task;
 class TaskController extends Controller
 {
   public function index()
   {
-    return view('tasks.index');
+    $tasks = Task::all();
+    return view('tasks.index',['tasks' => $tasks]);
   }
   public function create()
   {
@@ -16,22 +17,38 @@ class TaskController extends Controller
   }
   public function store(Request $request)
   {
+    $task = new Task;
+    $task->name = $request->name;
+    $task->description = $request->description;
+    // dd($task);
+    $task->save();
 
+    return redirect('/');
   }
-  public function show(Task $task)
+  public function show($id)
   {
+    $task = Task::find($id);
+    return view('tasks.show',['task'=>$task]);
+  }
+  public function edit($id)
+  {
+    $task = Task::find($id);
+    return view('tasks.edit',['task'=>$task]);
+  }
+  public function update(Request $request ,$id)
+  {
+    $task = Task::find($id);
+    $task->name = $request->name;
+    $task->description = $request->description;
 
+    $task->save();
+
+    return redirect('/');
   }
-  public function edit(Task $task)
+  public function destroy($id)
   {
-      //
-  }
-  public function update(Request $request, Task $task)
-  {
-      //
-  }
-  public function destroy(Task $task)
-  {
-      //
+    // dd($id);
+    Task::destroy($id);
+    return redirect('/');
   }
 }

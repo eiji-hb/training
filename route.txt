@@ -10,4 +10,7 @@
 |        | GET|HEAD | _debugbar/telescope/{id}      | debugbar.telescope    | Barryvdh\Debugbar\Controllers\TelescopeController@show        | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
 |        | GET|HEAD | api/user                      |                       | Closure                                                       | api,auth:api                                         |
 |        | GET|HEAD | create                        | task.create           | App\Http\Controllers\TaskController@create                    | web                                                  |
+|        | POST     | create                        | task.store            | App\Http\Controllers\TaskController@store                     | web                                                  |
+|        | GET|HEAD | edit/{id}                     | task.edit             | App\Http\Controllers\TaskController@edit                      | web                                                  |
+|        | GET|HEAD | show/{id}                     | task.show             | App\Http\Controllers\TaskController@show                      | web                                                  |
 +--------+----------+-------------------------------+-----------------------+---------------------------------------------------------------+------------------------------------------------------+
