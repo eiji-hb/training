@@ -6,7 +6,8 @@ use App\Models\Task;
 use Faker\Generator as Faker;
 
 $factory->define(Task::class, function (Faker $faker) {
-    return [
-        //
-    ];
+  return [
+    'name' => $faker->name,
+    'description' => $faker->realText(50),
+  ];
 });
