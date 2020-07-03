@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/','TaskController@index')->name('root');
+Route::get('create', 'TaskController@create')->name('task.create');
