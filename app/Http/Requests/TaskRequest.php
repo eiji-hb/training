@@ -25,7 +25,7 @@ class TaskRequest extends FormRequest
     {
       return [
         'name' => 'required|string|max:20',
-        'description' => 'required|text|max:100',
+        'description' => 'required|string|max:100',
       ];
     }
 }
